@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards - Acessibilidade Visual</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Flashcards de Estudo: Acessibilidade Auditiva na Web</h1>
+    <p>Pressione <kbd>Tab</kbd> para navegar e <kbd>Enter</kbd> ou <kbd>Espaço</kbd> para revelar a resposta.</p>
+  </header>
+
+  <main class="container">
+    <!-- Card 1 -->
+    <article class="flashcard" tabindex="0" role="button" aria-expanded="false">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Como legendas e Libras ajudam pessoas surdas a entender vídeos?</h2>
+          <span class="dica">Clique ou pressione Enter para virar</span>
+        </div>
+        <div class="card-back">
+          <p>As legendas transformam o áudio em texto escrito, enquanto a Libras garante o acesso na Língua Brasileira de Sinais, que é a primeira língua de muitos surdos.  </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="flashcard" tabindex="0" role="button" aria-expanded="false">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Como alertas visuais e táteis substituem sons para quem é surdo? <code></code></h2>
+          <span class="dica">Clique ou pressione Enter para virar</span>
+        </div>
+        <div class="card-back">
+          <p>Eles trocam o som por luzes piscantes (visuais) ou vibrações (táteis) no celular e no ambiente para avisar sobre chamadas, alarmes e emergências.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    // Permite virar o cartão usando o teclado (Enter ou Espaço) ou Clique
+    document.querySelectorAll('.flashcard').forEach(card => {
+      const toggleCard = () => {
+        card.classList.toggle('virado');
+        const isVirado = card.classList.contains('virado');
+        card.setAttribute('aria-expanded', isVirado);
+      };
+
+      card.addEventListener('click', toggleCard);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleCard();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

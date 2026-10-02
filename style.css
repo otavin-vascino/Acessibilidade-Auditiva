@@ -1,0 +1,120 @@
+/* Configurações Globais de Acessibilidade */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif; /* Fonte sans-serif de alta legibilidade */
+    background-color: #0d1117; /* Fundo escuro para conforto visual */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    color: #79ff58cc;
+    margin-bottom: 10px;
+  }
+  
+  kbd {
+    background-color: #21262d;
+    border: 1px solid #8b9e8d;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.9rem;
+  }
+  
+  /* Layout dos Cards */
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1000px;
+  }
+  
+  .flashcard {
+    width: 320px;
+    height: 220px;
+    perspective: 1000px;
+    cursor: pointer;
+    border-radius: 12px;
+    outline: none;
+  }
+  
+  /* FOCO VISÍVEL: Essencial para navegação por teclado */
+  .flashcard:focus-visible {
+    outline: 4px solid #f2cc60;
+    outline-offset: 5px;
+  }
+  
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+  }
+  
+  /* Classe ativada via JavaScript ou Hover */
+  .flashcard.virado .card-inner,
+  .flashcard:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Lados do Cartão */
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Frente: Alto Contraste (Fundo Claro / Texto Escuro) */
+  .card-front {
+    background-color: #ffffff;
+    color: #000000;
+    border: 3px solid #58ff5854;
+  }
+  
+  .card-front h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .dica {
+    font-size: 0.85rem;
+    color: #484f58;
+    text-decoration: underline;
+  }
+  
+  /* Verso: Alto Contraste (Fundo Verde Escuro / Texto Branco) */
+  .card-back {
+    background-color: #0e4429;
+    color: #ffffff;
+    border: 3px solid #3fb950;
+    transform: rotateY(180deg);
+  }
+  
+  .card-back p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
